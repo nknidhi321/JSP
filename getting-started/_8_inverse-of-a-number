@@ -1,0 +1,24 @@
+//https://classroom.pepcoding.com/myClassroom/the-switch-program-4/getting-started/inverse-of-a-number-official/ojquestion
+import java.util.*;
+
+public class Main{
+
+public static void main(String[] args) {
+  // write your code here 
+  Scanner sc = new Scanner(System.in);
+  int n = sc.nextInt();
+  int temp = n;
+  int length = 0;
+  while(temp > 0){
+      length++;
+      temp = temp / 10;
+  }
+  int ans = 0;
+  for(int i = 1; i <= length; i++){
+      int rem = n % 10;
+      n = n / 10;
+      ans += i * (int)Math.pow(10, rem - 1);
+  }
+  System.out.println(ans);
+ }
+}
