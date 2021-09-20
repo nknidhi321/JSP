@@ -1,0 +1,42 @@
+//https://classroom.pepcoding.com/myClassroom/the-switch-program-4/functions-and-arrays/sum-of-two-arrays-official/ojquestion
+import java.io.*;
+import java.util.*;
+
+public class Main{
+
+public static void main(String[] args) throws Exception {
+    Scanner sc = new Scanner(System.in);
+    int n1 = sc.nextInt();
+    int[] arr1 = new int[n1];
+    for(int i = 0; i < n1; i++){
+        arr1[i] = sc.nextInt();
+    }
+    
+    int n2 = sc.nextInt();
+    int[] arr2 = new int[n2];
+    for(int i = 0; i < n2; i++){
+        arr2[i] = sc.nextInt();
+    }
+    
+    int[] ans = new int[Math.max(n1, n2) + 1];
+    int carry = 0;
+    int idx1 = arr1.length - 1;
+    int idx2 = arr2.length - 1;
+    int ansIdx = ans.length - 1; 
+    
+    while(ansIdx >= 0){
+        int digit1 = idx1 >= 0 ? arr1[idx1--] : 0;
+        int digit2 = idx2 >= 0 ? arr2[idx2--] : 0;
+        int sum = digit1 + digit2 + carry;
+        ans[ansIdx] = sum % 10;
+        carry = sum / 10;
+        ansIdx--;
+    }
+    
+    for(int i = 0; i < ans.length; i++) {
+        if(i == 0 && ans[i] == 0) continue; 
+        System.out.println(ans[i]);    
+    }
+ }
+
+}
