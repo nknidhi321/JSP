@@ -1,0 +1,83 @@
+//https://classroom.pepcoding.com/myClassroom/the-switch-program-4/recursion-on-the-way-up/print-permutations-official/ojquestion
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+        Scanner sc = new Scanner(System.in);
+        String str = sc.next();
+           printPermutations(str, "");
+    
+    
+        // ArrayList<String> ans = getPermutations(str);
+        // for(String s : ans){
+        //     System.out.println(s);
+        // }
+        
+       
+        // ArrayList<String> ans = getPermutationsI(str);
+        // for(String s : ans){
+        //     System.out.println(s);
+        // }
+    }
+
+
+    //Archit
+    public static void printPermutations(String str, String asf) {
+        if(str.length() == 0){
+            System.out.println(asf);
+            return;
+        }
+        
+        for(int i = 0; i < str.length(); i++){
+            String firstPart = str.substring(0, i);
+            String secPart = str.substring(i + 1);
+            printPermutations(firstPart + secPart, asf + str.charAt(i));
+        }
+    }
+    
+    
+    //Trying get type of Archit //Incomplete
+    public static ArrayList<String> getPermutationsI(String str){
+         if(str.length() == 0){
+            ArrayList<String> list = new ArrayList<>();
+            list.add("");
+            return list;
+        }
+         ArrayList<String> ans = new ArrayList<>();
+         for(int i = 0; i < str.length(); i++){
+            String firstPart = str.substring(0, i);
+            String secPart = str.substring(i + 1);
+            char c = str.charAt(i);
+            ArrayList<String> smallAns = getPermutationsI(firstPart + secPart);
+            for(String smallStr : smallAns){
+                for(int idx  = 0; idx <= smallStr.length(); idx++){
+                    ans.add(smallStr.substring(0, idx) + c + smallStr.substring(idx));
+                }
+            }
+        }
+        return ans;
+    }
+    
+    
+    //Ananya //Answer is correct //Not according to the order
+    public static ArrayList<String> getPermutations(String str){
+         if(str.length() == 0){
+            ArrayList<String> list = new ArrayList<>();
+            list.add("");
+            return list;
+        }
+        
+        char c = str.charAt(0);
+        ArrayList<String> smallAns = getPermutations(str.substring(1));
+        ArrayList<String> ans = new ArrayList<>();
+        for(String smallStr : smallAns){
+            for(int i  = 0; i <= smallStr.length(); i++){
+                ans.add(smallStr.substring(0, i) + c + smallStr.substring(i));
+            }
+        }
+        return ans;
+    }
+
+}
