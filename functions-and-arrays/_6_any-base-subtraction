@@ -1,0 +1,41 @@
+//https://classroom.pepcoding.com/myClassroom/the-switch-program-4/functions-and-arrays/any-base-subtraction-official/ojquestion
+import java.util.*;
+  
+  public class Main{
+  
+  public static void main(String[] args) {
+      Scanner scn = new Scanner(System.in);
+      int b = scn.nextInt();
+      int n1 = scn.nextInt();
+      int n2 = scn.nextInt();
+  
+      int d = getDifference(b, n1, n2);
+      System.out.println(d);
+   }
+  
+   public static int getDifference(int b, int n1, int n2){
+       // write your code here
+       int borrow = 0;
+       int ans = 0;
+       int placeValue = 1;
+       
+       while(n2 != 0){
+           int remN1 = n1 % 10;
+           int remN2 = n2 % 10;
+           n1 = n1 / 10;
+           n2 = n2 / 10;
+           
+           int diff = (remN2 - borrow) - remN1;
+           if(diff < 0){
+               diff = diff + b;
+               borrow = 1;
+           }else{
+               borrow = 0;
+           }
+           ans = ans + (diff * placeValue);
+           placeValue = placeValue * 10;
+       }
+       return ans;
+   }
+  
+  }
