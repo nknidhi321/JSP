@@ -1,0 +1,55 @@
+//https://classroom.pepcoding.com/myClassroom/the-switch-program-4/functions-and-arrays/difference-of-two-arrays-official/ojquestion
+import java.io.*;
+import java.util.*;
+
+public class Main{
+
+public static void main(String[] args) throws Exception {
+    Scanner sc = new Scanner(System.in);
+		int n1 = sc.nextInt();
+		int[] arr1 = new int[n1];
+		for (int i = 0; i < n1; i++) {
+			arr1[i] = sc.nextInt();
+		}
+
+		int n2 = sc.nextInt();
+		int[] arr2 = new int[n2];
+		for (int i = 0; i < n2; i++) {
+			arr2[i] = sc.nextInt();
+		}
+
+		int[] ans = new int[Math.max(n1, n2)];
+		int borrow = 0;
+		int idx1 = arr1.length - 1;
+		int idx2 = arr2.length - 1;
+		int ansIdx = ans.length - 1;
+
+		while (ansIdx >= 0) {
+		    int digit2 = idx2 >= 0 ? arr2[idx2--] : 0;
+			int digit1 = idx1 >= 0 ? arr1[idx1--] : 0;
+			
+			int diff = (digit2 - borrow) - digit1;
+			
+			if(diff < 0) { 
+			    diff = diff + 10;
+			    borrow = 1;
+			}
+			else {
+			    borrow = 0;
+			}
+			
+			ans[ansIdx--] = diff;
+		}
+
+        int i = 0;
+		while(i < ans.length) {
+			if (ans[i] == 0) i++;
+			else break;
+		}
+		
+		for(; i < ans.length; i++){
+		    System.out.println(ans[i]);
+		}
+ }
+
+}
