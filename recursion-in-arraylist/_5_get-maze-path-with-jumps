@@ -1,0 +1,58 @@
+//https://classroom.pepcoding.com/myClassroom/the-switch-program-4/recursion-in-arraylist/get-maze-path-with-jumps-official/ojquestion
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        int[][] arr = new int[n][m];
+        ArrayList<String> ans = getMazePaths(1, 1, n, m);
+        System.out.println(ans);
+    }
+
+    // sr - source row
+    // sc - source column
+    // dr - destination row
+    // dc - destination column
+    public static ArrayList<String> getMazePaths(int sr, int sc, int dr, int dc) {
+        if(sr == dr && sc == dc){
+            ArrayList<String> list = new ArrayList<>();
+            list.add("");
+            return list;
+        }
+        
+        ArrayList<String> ans = new ArrayList<String>();
+        
+        for(int jump = 1; jump <= dc; jump++){
+            if(sc + jump <= dc){
+                ArrayList<String> horiz = getMazePaths(sr, sc + jump, dr, dc);
+                for(String str : horiz){
+                    ans.add("h" + jump + str); 
+                }
+            }
+        }
+           
+        for(int jump = 1; jump <= dr; jump++){ 
+            if(sr + jump <= dr){
+                ArrayList<String> verti = getMazePaths(sr + jump, sc, dr, dc);   
+                for(String str : verti){
+                    ans.add("v" + jump + str); 
+                }
+            }
+        }
+        
+        for(int jump = 1; jump <= dc; jump++){
+            if(sc + jump <= dc && sr + jump <= dr){
+                ArrayList<String> horiz = getMazePaths(sr + jump, sc + jump, dr, dc);
+                for(String str : horiz){
+                    ans.add("d" + jump + str); 
+                }
+            }
+        }
+        return ans;
+    }
+
+}
