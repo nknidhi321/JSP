@@ -1,0 +1,29 @@
+//https://classroom.pepcoding.com/myClassroom/the-switch-program-4/getting-started/print-all-primes-till-n-official/ojquestion
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args) {
+        // write your code here
+        Scanner sc = new Scanner(System.in);
+       int low = sc.nextInt();
+       int high = sc.nextInt();
+       boolean notPrime = false;
+       
+       for(int i = low; i <= high; i++){
+           notPrime = false;
+           int n = i;
+           if(n == 1){
+              System.out.println("prime");
+                continue;
+           }              
+           for(int div = 2; div <= (int)Math.sqrt(n); div++){
+               if(n % div == 0){
+                   notPrime = true;
+                   break;
+               }
+           }
+           if(!notPrime)
+               System.out.println(n);
+       }
+    }
+}
