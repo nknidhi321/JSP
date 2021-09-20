@@ -1,0 +1,55 @@
+//https://classroom.pepcoding.com/myClassroom/the-switch-program-4/dynamic-programming/fibonacci-dp-official/ojquestion
+import java.io.*;
+import java.util.*;
+
+public class Main{
+
+public static void main(String[] args) throws Exception {
+    // write your code here
+    Scanner sc = new Scanner(System.in);
+    int n = sc.nextInt();
+    int[] dp = new int[n + 1];
+    System.out.println(fibo_rec(n));
+  //System.out.println(fibo_memo(n, dp));
+  //System.out.println(fibo_tab(n, dp));
+ }
+ 
+ public static int fibo_rec(int n){
+        if(n == 0 || n == 1) return n;
+
+        int first = 0;
+        int sec = 0;
+        if(n - 1 >= 0) first = fibo_rec(n - 1);
+        if(n - 2 >= 0) sec = fibo_rec(n - 2);
+        return first + sec;
+    }
+ 
+ public static int fibo_memo(int n, int[] dp){
+    if(n == 0 || n == 1) return dp[n] = n;
+    
+    if(dp[n] != 0) return dp[n];
+    
+    int first = 0;
+    int sec = 0;
+    if(n - 1 >= 0) first = fibo_memo(n - 1, dp);
+    if(n - 2 >= 0) sec = fibo_memo(n - 2, dp);
+    return dp[n] = first + sec;
+ }
+ 
+ public static int fibo_tab(int N, int[] dp){
+    for(int n = 0; n < dp.length; n++){
+        if(n == 0 || n == 1) {
+            dp[n] = n;
+            continue;
+        }
+        
+        int first = 0;
+        int sec = 0;
+        if(n - 1 >= 0) first = dp[n - 1];
+        if(n - 2 >= 0) sec = dp[n - 2];
+        dp[n] = first + sec;
+    }
+    return dp[N];
+ }
+
+}
