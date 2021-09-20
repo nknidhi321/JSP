@@ -1,0 +1,45 @@
+//https://classroom.pepcoding.com/myClassroom/the-switch-program-4/dynamic-programming/min-cost-maze-traversal-official/ojquestion
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+        // write your code here
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        int[][] arr = new int[n][m];
+        for(int i = 0; i < n; i++){
+            for(int j = 0; j < m; j++){
+                arr[i][j] = sc.nextInt();
+            }
+        }
+        
+        int[][] dp = new int[n][m];
+        for(int[] a : dp){
+            Arrays.fill(a, -1);
+        }
+        
+        System.out.println(minCost(0, 0, n - 1, m - 1, arr, dp));
+    }
+    
+    public static int minCost(int sr, int sc, int er, int ec, int[][] arr, int[][] dp){
+        if(sr == er && sc == ec) return dp[sr][sc] = arr[sr][sc];
+        
+        if(dp[sr][sc] != -1) return dp[sr][sc];
+        
+        int horizonalMoveCost = Integer.MAX_VALUE;
+        if(sc + 1 <= ec){
+           horizonalMoveCost = minCost(sr, sc + 1, er, ec, arr, dp);
+        }
+        
+        int verticalMoveCost = Integer.MAX_VALUE;
+        if(sr + 1 <= er){
+            verticalMoveCost = minCost(sr + 1, sc, er, ec, arr, dp);
+        }
+        
+        return dp[sr][sc] = Math.min(horizonalMoveCost, verticalMoveCost) + arr[sr][sc];
+    }
+
+}
