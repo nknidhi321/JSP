@@ -1,0 +1,22 @@
+//https://classroom.pepcoding.com/myClassroom/the-switch-program-4/getting-started/prime-factorisation-official/ojquestion
+import java.util.*;
+
+public class Main{
+
+public static void main(String[] args) {
+  // write your code here  
+  Scanner sc = new Scanner(System.in);
+  int n = sc.nextInt();
+  for(int div = 2; div * div <= n; div++){
+      while(n % div == 0){
+          n = n / div;
+          System.out.print(div + " ");
+      }
+  }
+  if(n != 1){
+      //prime factor greater than root n
+      //and there can be only one such prime factor
+      System.out.print(n);
+  }
+ }
+}
