@@ -1,0 +1,85 @@
+//https://classroom.pepcoding.com/myClassroom/the-switch-program-4/dynamic-programming/goldmine-official/ojquestion
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        int[][] arr = new int[n][m];
+        for(int i = 0; i < n; i++){
+            for(int j = 0; j < m; j++){
+                arr[i][j] = sc.nextInt();
+            }
+        }
+        
+        int max = 0;
+        int[][] dp = new int[n][m];
+        for(int[] a : dp){
+            Arrays.fill(a, -1);
+        }
+        
+        for(int row = 0; row < n; row++){
+            max = Math.max(max, maxGold_memo(row, 0, arr, dp));
+        }  
+        System.out.println(max);
+        
+        
+      //System.out.println(maxGold_tab(0, 0, arr));
+      
+    }
+    
+    public static int maxGold_memo(int sr, int sc, int[][] arr, int[][] dp){
+        if(sc == arr[0].length - 1) return dp[sr][sc] = arr[sr][sc];
+        
+        if(dp[sr][sc] != -1) return dp[sr][sc];
+        
+        int topDia = 0, hori = 0, downDia = 0;
+        if(sr - 1 >= 0 && sc + 1 <= arr[0].length - 1)
+            topDia = maxGold_memo(sr - 1, sc + 1, arr, dp);
+        
+        if(sc + 1 <= arr[0].length - 1)
+            hori = maxGold_memo(sr, sc + 1, arr, dp);
+        
+        if(sr + 1 <= arr.length - 1 && sc + 1 <= arr[0].length - 1)
+            downDia = maxGold_memo(sr + 1, sc + 1, arr, dp);
+        
+        return dp[sr][sc] = Math.max(downDia, Math.max(topDia, hori)) + arr[sr][sc];
+    }
+    
+    public static int maxGold_tab(int SR, int SC, int[][] arr){
+        int maxGold = 0;
+        int[][] dp = new int[arr.length][arr[0].length];
+        
+        for(int sc = arr[0].length - 1; sc >= 0; sc--){
+            for(int sr = arr.length - 1; sr >= 0; sr--){    
+                if(sc == arr[0].length - 1) {
+                    dp[sr][sc] = arr[sr][sc];
+                    continue;
+                }
+                
+                int topDia = 0, hori = 0, downDia = 0;
+                if(sr - 1 >= 0 && sc + 1 <= arr[0].length - 1)
+                    topDia = dp[sr - 1][sc + 1];
+                
+                if(sc + 1 <= arr[0].length - 1)
+                    hori = dp[sr][sc + 1];
+                
+                if(sr + 1 <= arr.length - 1 && sc + 1 <= arr[0].length - 1)
+                    downDia = dp[sr + 1][sc + 1];
+                    
+                dp[sr][sc] = Math.max(downDia, Math.max(topDia, hori)) + arr[sr][sc];   
+            }
+        }
+        
+        for(int row = 0; row < arr.length; row++){
+            maxGold = Math.max(maxGold, dp[row][0]);
+        }
+            
+        return maxGold;
+    }
+    
+
+}
