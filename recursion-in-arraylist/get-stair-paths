@@ -1,0 +1,41 @@
+//https://classroom.pepcoding.com/myClassroom/the-switch-program-4/recursion-in-arraylist/get-stair-paths-official/ojquestion
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        ArrayList<String> ans = getStairPaths(n);
+        System.out.println(ans);
+    }
+
+    public static ArrayList<String> getStairPaths(int n) {
+        if(n == 0){
+            ArrayList<String> list = new ArrayList<>();
+            list.add("");
+            return list;
+        }
+        if(n < 0) return new ArrayList<>();
+  
+        ArrayList<String> ones = getStairPaths(n - 1);
+        ArrayList<String> twos = getStairPaths(n - 2);
+        ArrayList<String> threes = getStairPaths(n - 3);
+        
+        ArrayList<String> ans = new ArrayList<String>();
+        
+        
+        for(String str : ones){
+            ans.add("1" + str); 
+        }
+         for(String str : twos){
+            ans.add("2" + str); 
+        }
+         for(String str : threes){
+            ans.add("3" + str); 
+        }
+        return ans;
+    }
+
+}
