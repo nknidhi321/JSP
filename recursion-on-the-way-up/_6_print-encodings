@@ -1,0 +1,34 @@
+//https://classroom.pepcoding.com/myClassroom/the-switch-program-4/recursion-on-the-way-up/print-encodings-official/ojquestion
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+        Scanner sc = new Scanner(System.in);
+        String str = sc.next();
+        printMazePaths(str);
+    }
+
+    public static void printMazePaths(String str) {
+        printMazePaths_Util(str, 0, "");
+    }
+    
+    public static void printMazePaths_Util(String s, int idx, String psf) {
+        if(idx == s.length()){
+            System.out.println(psf);
+            return;
+        }
+        
+        char firstChar = s.charAt(idx);
+        if(firstChar == '0') return;
+        printMazePaths_Util(s, idx + 1, psf + (char)(firstChar - '0' + 'a' - 1));
+        
+        if(idx + 2 <= s.length()){
+            String firstTwoChar = "" + s.charAt(idx) + s.charAt(idx + 1);
+            int firstTwoCharIntValue = Integer.parseInt(firstTwoChar);
+            if(firstTwoCharIntValue <= 26) printMazePaths_Util(s, idx + 2, psf + (char)(firstTwoCharIntValue + 'a' - 1));
+        }
+    }
+
+}
