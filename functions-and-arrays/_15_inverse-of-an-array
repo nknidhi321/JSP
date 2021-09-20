@@ -4,12 +4,9 @@ import java.util.*;
 
 public class Main{
   public static void display(int[] a){
-    StringBuilder sb = new StringBuilder();
-
-    for(int val: a){
-      sb.append(val + "");
+    for(int val : a){
+        System.out.println(val);
     }
-    System.out.println(sb);
   }
 
   public static int[] inverse(int[] a){
