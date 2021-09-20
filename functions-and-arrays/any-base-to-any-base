@@ -1,0 +1,40 @@
+//https://classroom.pepcoding.com/myClassroom/the-switch-program-4/functions-and-arrays/any-base-to-any-base-official/ojquestion
+import java.util.*;
+  
+public class Main{
+
+	public static void main(String[] args) {
+		 Scanner scn = new Scanner(System.in);
+	     int n = scn.nextInt();
+	     int sourceBase = scn.nextInt();
+	     int  destBase= scn.nextInt();
+	     int decimalValue = getValueIndecimal(n, sourceBase);
+	     int destinedBaseValue = getValueInBase(decimalValue, destBase);
+	     System.out.println(destinedBaseValue);
+	}
+	
+	public static int getValueIndecimal(int n, int b) {
+		int placeValue = 0;
+		int sum = 0;
+		while (n != 0) {
+			int rem = n % 10;
+			n = n / 10;
+			sum = sum + rem * (int) Math.pow(b, placeValue);
+			placeValue++;
+		}
+		return sum;
+	}
+	
+	public static int getValueInBase(int n, int b) {
+		int placeValue = 0;
+		int sum = 0;
+		while (n != 0) {
+			int rem = n % b;
+			n = n / b;
+			sum = sum + rem * (int) Math.pow(10, placeValue);
+			placeValue++;
+		}
+		return sum;
+	}
+
+}
