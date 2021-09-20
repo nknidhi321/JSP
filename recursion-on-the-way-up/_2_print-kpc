@@ -1,0 +1,32 @@
+//https://classroom.pepcoding.com/myClassroom/the-switch-program-4/recursion-on-the-way-up/print-kpc-official/ojquestion
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+        Scanner sc = new Scanner(System.in);
+        String s = sc.next();
+        printKPC(s, "");
+    }
+
+    public static void printKPC(String str, String asf) {
+        String keyValue[] = {".;", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tu", "vwx", "yz"};
+        printKPC_Util(str, 0, asf, keyValue);
+        return;
+    }
+    
+    public static void printKPC_Util(String s, int idx, String asf, String[] keyValue) {
+        if(idx == s.length()){
+            System.out.println(asf);
+            return;
+        }
+        
+        String currKey = keyValue[s.charAt(idx) - '0'];
+        
+        for(int i = 0; i < currKey.length(); i++){
+            printKPC_Util(s, idx + 1, asf + currKey.charAt(i), keyValue);
+        }
+    }
+
+}
