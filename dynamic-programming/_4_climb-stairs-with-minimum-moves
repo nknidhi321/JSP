@@ -1,0 +1,60 @@
+//https://classroom.pepcoding.com/myClassroom/the-switch-program-4/dynamic-programming/climb-stairs-with-minimum-moves-official/ojquestion
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+        // write your code here
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        
+        int[] moves = new int[n];
+        for (int i = 0; i < n; i++) {
+          moves[i] = sc.nextInt();
+        }
+    
+        int[] dp = new int[n + 1];
+        Arrays.fill(dp, -1);
+    //    System.out.println(path_memo(0, moves, dp));
+
+        System.out.println(path_tab(n, moves));
+  }
+
+
+  public static int path_memo(int n, int[] moves, int[] dp) {
+    if (n == moves.length) return dp[n] = 0;
+
+    if (dp[n] != -1) return dp[n];
+
+    int min = (int)1e8;
+    for (int jumps = 1; jumps <= moves[n]; jumps++) {
+      if (n + jumps <= moves.length) {
+        min = Math.min(min, path_memo(n + jumps, moves, dp));
+      }
+    }
+    return dp[n] = min + 1;
+  }
+  
+  public static int path_tab(int N, int[] moves) {
+    int[] dp = new int[N + 1];  
+      
+    for(int n = moves.length; n >= 0; n--){  
+        if (n == moves.length) {
+            dp[n] = 0;
+            continue;
+        }
+    
+        int min = (int)1e8;
+        for (int jumps = 1; jumps <= moves[n]; jumps++) {
+          if (n + jumps <= moves.length) {
+            min = Math.min(min, dp[n + jumps]);
+          }
+        }
+       // if(min != (int)1e8) 
+       dp[n] = min + 1;
+    }
+    return dp[0];
+  }
+
+}
