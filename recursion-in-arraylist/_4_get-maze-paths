@@ -1,0 +1,45 @@
+//https://classroom.pepcoding.com/myClassroom/the-switch-program-4/recursion-in-arraylist/get-maze-paths-official/ojquestion
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        int[][] arr = new int[n][m];
+        ArrayList<String> ans = getMazePaths(1, 1, n, m);
+        System.out.println(ans);
+    }
+
+    // sr - source row
+    // sc - source column
+    // dr - destination row
+    // dc - destination column
+    public static ArrayList<String> getMazePaths(int sr, int sc, int dr, int dc) {
+        if(sr == dr && sc == dc){
+            ArrayList<String> list = new ArrayList<>();
+            list.add("");
+            return list;
+        }
+        
+        ArrayList<String> ans = new ArrayList<String>();
+        
+        if(sc + 1 <= dc){
+            ArrayList<String> horiz = getMazePaths(sr, sc + 1, dr, dc);
+            for(String str : horiz){
+                ans.add("h" + str); 
+            }
+        }
+            
+        if(sr + 1 <= dr){
+            ArrayList<String> verti = getMazePaths(sr + 1, sc, dr, dc);   
+            for(String str : verti){
+                ans.add("v" + str); 
+            }
+        }
+        return ans;
+    }
+    
+}
