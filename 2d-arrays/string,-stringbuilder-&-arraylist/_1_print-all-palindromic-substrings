@@ -1,0 +1,31 @@
+//https://classroom.pepcoding.com/myClassroom/the-switch-program-4/string,-stringbuilder-&-arraylist/print-all-palindromic-substrings-official/ojquestion
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+	public static boolean isPalindrome(String str){
+	    int i = 0, j = str.length() - 1;
+	    while(i < j){
+	        if(str.charAt(i++) != str.charAt(j--)){
+	            return false;
+	        }
+	    }
+	    return true;
+	}
+
+	public static void main(String[] args) {
+		Scanner scn = new Scanner(System.in);
+		String str = scn.next();
+    //Move upto length of the string beacuse substring second parameter takes parameter - 1 
+		for(int start = 0; start <= str.length(); start++){
+		    for(int end = start + 1; end <= str.length(); end++){
+		       String substring = str.substring(start, end);
+		       if(isPalindrome(substring)){
+		           System.out.println(substring);
+		       }
+		    }
+		}
+	}
+
+}
