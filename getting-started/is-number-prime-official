@@ -1,0 +1,31 @@
+import java.util.*;
+  
+  public class Main{
+  
+  public static void main(String[] args) {
+      Scanner scn = new Scanner(System.in);
+  
+       // write ur code here
+       Scanner sc = new Scanner(System.in);
+       int t = sc.nextInt();
+       boolean notPrime = false;
+       
+       for(int i = 0; i < t; i++){
+           notPrime = false;
+           int n = sc.nextInt();
+           if(n == 1){
+              System.out.println("prime");
+                continue;
+           }              
+           for(int div = 2; div <= (int)Math.sqrt(n); div++){
+               if(n % div == 0){
+                   notPrime = true;
+                   System.out.println("not prime");
+                   break;
+               }
+           }
+           if(!notPrime)
+               System.out.println("prime");
+       }
+   }
+  }
