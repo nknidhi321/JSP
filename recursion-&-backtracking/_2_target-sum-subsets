@@ -1,0 +1,58 @@
+//https://classroom.pepcoding.com/myClassroom/the-switch-program-4/recursion-&-backtracking/target-sum-subsets-official/ojquestion
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for(int i = 0; i < arr.length; i++){
+            arr[i] = sc.nextInt();
+        }
+        int tar = sc.nextInt();
+        printTargetSumSubsets(arr, 0, "", 0, tar);
+    }
+
+    // set is the subset
+    // sos is sum of subset
+    // tar is target
+    public static void printTargetSumSubsets(int[] arr, int idx, String set, int sos, int tar) {
+        // By pruning //Archit's code
+        // if(idx == arr.length){
+        //     if(sos == tar) System.out.println(set + ".");
+        //     return;
+        // }
+        // if(sos > tar) return;
+        
+      
+        //By pruning //My code
+        if(idx == arr.length){
+            if(sos == tar) System.out.println(set + ".");
+            return;
+        }
+        if(sos > tar) return;
+        /*
+        //NOTE: At idx index in the base case here you are taking decision for previous 0 to idx - 1 indexes sum.
+        //So for the last valid index your answer will come at (last + 1)th index that is at arr.length
+        //(Because we are adding the current index value after checking the base case)
+        if(sos == tar){ //This will result in wrong answer when the array will contain 0 as an element
+            System.out.println(set + "."); // Suppose arr = {2, 3, 0, 4} and target = 6
+            return; //Then you will print your answer as {2, 3} and return from there but there exists another case {2, 3, 0}                     
+                    //which also sums to 6, so this part of the code will always ask you to return if you achieved the target                     
+                    //irrespective of there could exist a 0 in the further unprocessed array
+        }*/
+        
+        
+        // Burtue force //Subsequence
+        // if(idx == arr.length){
+        //     if(sos == tar) System.out.println(set + ".");
+        //     return;
+        // }
+        
+        printTargetSumSubsets(arr, idx + 1, set + arr[idx] + ", ", sos + arr[idx], tar);
+        printTargetSumSubsets(arr, idx + 1, set, sos, tar);
+    }
+
+}
