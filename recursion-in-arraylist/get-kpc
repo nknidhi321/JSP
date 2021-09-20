@@ -1,0 +1,76 @@
+//https://classroom.pepcoding.com/myClassroom/the-switch-program-4/recursion-in-arraylist/get-kpc-official/ojquestion
+
+// import java.io.*;
+// import java.util.*;
+
+// public class Main {
+
+//     public static void main(String[] args) throws Exception {
+//         Scanner sc = new Scanner(System.in);
+//         String s = sc.next();
+//         ArrayList<String> ans = getKPC(s);
+//         System.out.println(ans);
+//     }
+
+//     public static String keyValue[] = {".;", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tu", "vwx", "yz"};
+//     public static ArrayList<String> getKPC(String s) {
+//         if(s.length() == 0){
+//             ArrayList<String> list = new ArrayList<>();
+//             list.add("");
+//             return list;
+//         }
+        
+//         String currKey = keyValue[s.charAt(0) - '0'];
+//         ArrayList<String> list = getKPC(s.substring(1));
+//         ArrayList<String> ans = new ArrayList<String>();
+        
+//         for(int i = 0; i < currKey.length(); i++){
+//             char c = currKey.charAt(i);
+//             for(String str : list){
+//                 ans.add(c + str); 
+//             }
+//         }
+//         return ans;
+//     }
+
+// }
+
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+        Scanner sc = new Scanner(System.in);
+        String s = sc.next();
+        ArrayList<String> ans = getKPC(s);
+        System.out.println(ans);
+    }
+
+    public static ArrayList<String> getKPC(String s) {
+        String keyValue[] = {".;", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tu", "vwx", "yz"};
+        return getKPC_Util(s, 0, keyValue);
+    }
+    
+    public static ArrayList<String> getKPC_Util(String s, int idx, String[] keyValue) {
+        if(idx == s.length()){
+            ArrayList<String> list = new ArrayList<>();
+            list.add("");
+            return list;
+        }
+        
+        String currKey = keyValue[s.charAt(idx) - '0'];
+        ArrayList<String> list = getKPC_Util(s, idx + 1, keyValue);
+        
+        ArrayList<String> ans = new ArrayList<String>();
+        
+        for(int i = 0; i < currKey.length(); i++){
+            char c = currKey.charAt(i);
+            for(String str : list){
+                ans.add(c + str); 
+            }
+        }
+        return ans;
+    }
+
+}
