@@ -1,0 +1,28 @@
+//https://classroom.pepcoding.com/myClassroom/the-switch-program-4/recursion-on-the-way-up/print-subsequence-official/ojquestion
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+        Scanner sc = new Scanner(System.in);
+        String s = sc.next();
+        printSS(s, "");
+    }
+
+    public static void printSS(String str, String ans) {
+        printSS_Util(str, 0, ans);
+        return;
+    }
+    
+    public static void printSS_Util(String s, int idx, String psf) {
+        if(idx == s.length()){
+            System.out.println(psf);
+            return;
+        }
+        
+        printSS_Util(s, idx + 1, psf + s.charAt(idx));
+        printSS_Util(s, idx + 1, psf);
+    }
+
+}
