@@ -9,24 +9,24 @@ import java.util.*;
        // write ur code here
        Scanner sc = new Scanner(System.in);
        int t = sc.nextInt();
-       boolean notPrime = false;
+       int factor;
        
        for(int i = 0; i < t; i++){
-           notPrime = false;
            int n = sc.nextInt();
+           factor = 0;
            if(n == 1){
+              //n is prime as per their portal 
               System.out.println("prime");
-                continue;
+              continue;
            }              
            for(int div = 2; div <= (int)Math.sqrt(n); div++){
                if(n % div == 0){
-                   notPrime = true;
+                   factor++;
                    System.out.println("not prime");
                    break;
                }
            }
-           if(!notPrime)
-               System.out.println("prime");
+           if(factor == 0) System.out.println("prime");
        }
    }
   }
