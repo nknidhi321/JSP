@@ -1,5 +1,20 @@
 //https://pepcoding.com/resources/online-java-foundation/generic-tree/lca-generic-tree-official/ojquestion
 
+/*
+https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/discuss/1301160/Java-or-Solution-based-on-NodeToPath
+Solution
+========
+
+Get the path from p to root and q to root, store them in list
+
+The idea is, the value of all the nodes, upto the LCA from the root will be the same from the root till the LCA.
+Check this in path1 (for p) and path2 (for q), values will be same upto a certain position from root to LCA. (From right to left in the list, 
+since the p or q node is added first in the list and then the parent nodes above them).
+So, keep a while loop iterating from the right of the list and the moment you find different value iterating from the root (end of the list), 
+the prev at that point will contain your LCA TreeNode, since prev contains the previous TreeNode.
+*/
+
+
 import java.io.*;
 import java.util.*;
 
