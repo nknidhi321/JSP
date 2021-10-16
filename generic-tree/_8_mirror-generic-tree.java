@@ -1,5 +1,10 @@
 //https://pepcoding.com/resources/online-java-foundation/generic-tree/mirror-generic-tree-official/ojquestion#
 
+/*
+Faith : Child's children knows how to mirror itself. 
+Meeting faith with expextaion : You mirror yourself, means mirror your children (By reversing the children ArrayList)
+*/
+
 import java.io.*;
 import java.util.*;
 
