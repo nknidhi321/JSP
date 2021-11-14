@@ -1,5 +1,10 @@
 //https://www.pepcoding.com/resources/online-java-foundation/graphs/gcc-official/ojquestion
 
+/*
+  Similar:
+  https://www.geeksforgeeks.org/program-to-count-number-of-connected-components-in-an-undirected-graph/
+*/
+
 import java.io.*;
 import java.util.*;
 
@@ -16,8 +21,11 @@ public class Main {
       }
    }
    
-   //======================================================================================================================
+   //===================================================================================================================================================
    
+   // DFS on 1 component will take O(n + e) Time where n = vertices in that component, and e = edges in that component.
+   // Hence, getting all connected components will take O(N + E) time where N = total vertices, E = total edges
+  
    //get Connected Component
    public static void gcc(ArrayList<Edge>[] graph, ArrayList<ArrayList<Integer>> comps) {
        int N = graph.length;
@@ -41,7 +49,7 @@ public class Main {
        }
    }
 
-    //=====================================================================================================================
+   //===================================================================================================================================================
 
    public static void main(String[] args) throws Exception {
       BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
