@@ -1,5 +1,33 @@
 //https://www.pepcoding.com/resources/online-java-foundation/generic-tree/ceil-and-floor-official/ojquestion
 
+
+/*
+  ceil : K se Just Bada || Smallest among larger
+  floor : K se Just Chota || Largest among smaller
+  
+
+
+
+
+              --------------------------------
+              -                              -
+              -   Smallest among larger      -
+              -                              -
+              --------------------------------
+                      K se just Bada
+ 0 ============================================================ K
+                      K se just Chota
+              --------------------------------
+              -                              -
+              -   Largest among smaller      -
+              -                              -
+              --------------------------------
+ 
+
+
+*/
+
+
 import java.io.*;
 import java.util.*;
 
