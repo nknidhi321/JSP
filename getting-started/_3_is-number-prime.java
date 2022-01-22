@@ -1,32 +1,30 @@
-//https://classroom.pepcoding.com/myClassroom/the-switch-program-4/getting-started/is-number-prime-official/ojquestion
+// https://www.pepcoding.com/resources/online-java-foundation/getting-started/is-number-prime-official/ojquestion
+
+// NOTE : 1 is prime as per their portal
+// 1 and n se toh sab number divisible hoga he, so check for (1, n) exclusively
+// More efficient : Check only until sq root of the number 
+
 import java.util.*;
-  
-  public class Main{
-  
+
+public class Main {
+
   public static void main(String[] args) {
-      Scanner scn = new Scanner(System.in);
-  
-       // write ur code here
-       Scanner sc = new Scanner(System.in);
-       int t = sc.nextInt();
-       int factor;
-       
-       for(int i = 0; i < t; i++){
-           int n = sc.nextInt();
-           factor = 0;
-           if(n == 1){
-              //n is prime as per their portal 
-              System.out.println("prime");
-              continue;
-           }              
-           for(int div = 2; div <= (int)Math.sqrt(n); div++){
-               if(n % div == 0){
-                   factor++;
-                   System.out.println("not prime");
-                   break;
-               }
-           }
-           if(factor == 0) System.out.println("prime");
-       }
-   }
+    Scanner sc = new Scanner(System.in);
+    int tc = sc.nextInt();
+
+    while (tc-- > 0) {
+      int n = sc.nextInt();
+      int factors = 0;
+      for (int divisor = 2; divisor <= (int)Math.sqrt(n); divisor++) {
+        if (n % divisor == 0) {
+          factors++;
+          break;
+        }
+      }
+      if (factors == 0) System.out.println("prime"); // [2, root(n)] tak ek v factor nahi mila 
+      else System.out.println("not prime"); // [2, root(n)] tak koi factor mil gaya 
+    }
   }
+}
+
+//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
