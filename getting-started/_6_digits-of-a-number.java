@@ -1,5 +1,6 @@
 // https://www.pepcoding.com/resources/online-java-foundation/getting-started/digits-of-a-number-official/ojquestion
 
+
 import java.util.*;
 
 public class Main {
