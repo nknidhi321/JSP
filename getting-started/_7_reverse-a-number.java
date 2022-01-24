@@ -1,4 +1,5 @@
-//https://classroom.pepcoding.com/myClassroom/the-switch-program-4/getting-started/reverse-a-number-official/ojquestion
+// https://www.pepcoding.com/resources/online-java-foundation/getting-started/reverse-a-number-official/ojquestion
+
 import java.util.*;
    
    public class Main{
