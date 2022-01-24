@@ -37,6 +37,13 @@ public class Main {
 // 10^9 operation -> 1 sec
 // Acc to constraints while loop will run for 10^4 times and for loop will run for sq. root of 10^9 times
 
+/*
+    f1 * f2 = n, where f1 = smallFactor and f2 = largeFactor and f1 <= f2, 
+    therefore find the maximum range of f1, so replace f2 with f1
+    f1 * f1 = n => f1 = root n
+    Range : [2, root n]
+*/
+
 import java.util.*;
 
 public class Main {
