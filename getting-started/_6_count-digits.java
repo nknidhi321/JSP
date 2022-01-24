@@ -1,17 +1,19 @@
-//https://classroom.pepcoding.com/myClassroom/the-switch-program-4/getting-started/count-digits-official/ojquestion
+// https://www.pepcoding.com/resources/online-java-foundation/getting-started/count-digits-official/ojquestion
+
 import java.util.*;
-  
-  public class Main{
-  
+
+public class Main {
+
   public static void main(String[] args) {
     // write your code here
     Scanner sc = new Scanner(System.in);
     int n = sc.nextInt();
     int count = 0;
-    while(n > 0){
-        count++;
-        n = n / 10;
+    while (n > 0) {
+      count++;
+      n = n / 10;
     }
     System.out.println(count);
-   }
   }
+}
+
