@@ -1,6 +1,6 @@
 // https://pepcoding.com/resources/online-java-foundation/stacks-and-queues/duplicate-brackets-official/ojquestion
 
-// If you get a closing bracket then pop until you get an opening bracket 
+// If you get a closing bracket then pop until you get an opening bracket and also pop that '(' at last
 // Note that the popped elements count between that opening and closing bracket should be greater than 0
 
 import java.io.*;
@@ -24,7 +24,7 @@ public class Main {
                 else if(stack.peek() == '(') return true;
                 else {
                     while(!stack.isEmpty() && stack.peek() != '(') stack.pop();
-                    if(!stack.isEmpty()) stack.pop();
+                    if(!stack.isEmpty()) stack.pop();      // pop '(' at last 
                 }
             }
             else {
