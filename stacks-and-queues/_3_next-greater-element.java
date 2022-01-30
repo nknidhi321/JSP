@@ -52,8 +52,9 @@ public class Solution {
 // Iterating from right
 
 // More intuitive
-// Note : Yaha elements push karenge stack me
 // TC : O(2N) : At max every element will be visited twice once while pushing in the stack, and again while poping from the stack
+
+// Note : Yaha elements push karenge stack me. Why ? Because tum jis idx pe hoge tum us idx ka answer bnate chale jaaoge 
 
 import java.io.*;
 import java.util.*;
@@ -109,8 +110,11 @@ public class Solution {
 // Iterating from left
 
 // Less intuitive
-// Note : Yaha idx push hoga stack me
 // TC : O(2N) : At max every element will be visited twice once while pushing in the stack, and again while poping from the stack
+
+// Note : Yaha idx push hoga stack me. Why ? Because tum jis idx pe tum uska answer nahi bnawa rahe ho yaha, tum jo elements pop krawaoge tum uska answers bnaoge yaha
+// Suppose element he push kiya tha tumne, toh ab element 2 ka kya position tha tumko wo dhoondhna parega mtlb O(N) ka kharcha and then tum answer daal paaoge us idx pe,
+// So, better way would be idx he push kar do stack me.
 
 import java.io.*;
 import java.util.*;
