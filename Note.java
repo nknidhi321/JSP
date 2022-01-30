@@ -10,7 +10,7 @@ Difference between :   next()   ||    nextLine()   ||   nextInt()
 Behaviour :-
 ---------
 next() -> reads till it encounters a space
-nextLine() -> reads till it encounters a new line [ NOTE : It's new line -> enter button and not space ]
+nextLine() -> reads till it encounters a new line [ NOTE : Its new line -> enter button and not space ]
 nextInt() -> reads an integer
 
 
