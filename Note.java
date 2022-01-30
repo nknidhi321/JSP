@@ -44,7 +44,7 @@ The integer would be read in val(10) and s will read a new line( ) and not the s
                                                      
 Because job of nextLine() is to read until it finds a new line
 So after feeding 10, the enter which you hit, nextLine starts reading from that enter you had hit. 
-And in the very first time it encouters an enter, that's it job of nextLine() is done [ And there's no other nextLine() in the code to read that hello input ]
+And in the very first time it encouters an enter, that's it job of nextLine() is done [ And theres no other nextLine() in the code to read that hello input ]
                                                      
 Also note size of newLine is 1 obviously because new Line(enter) is a char
                                                      
@@ -101,6 +101,6 @@ Length of s : 5
   
 Observation :-
 -----------
-Give one extra nextLine() in your code for that "enter" which you hit after 10
+Give one extra nextLine() in your code for that enter which you hit after 10
   
 ----------------------------------------------------------------------------------------------------------------------------------------------------------  
