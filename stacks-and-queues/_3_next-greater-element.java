@@ -1,3 +1,4 @@
+// https://pepcoding.com/resources/online-java-foundation/stacks-and-queues/next-greater-element-official/ojquestion
 // https://www.hackerrank.com/contests/second/challenges/next-greater-element/problem
 
 // Brute force
@@ -47,8 +48,10 @@ public class Solution {
 
 //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
-// Using Stack
+// Using Stack 
+// Iterating from right
 
+// More intuitive
 // TC : O(2N) : At max every element will be visited twice once while pushing in the stack, and again while poping from the stack
 
 import java.io.*;
@@ -79,9 +82,8 @@ public class Solution {
         int n = arr.length;
         int[] ans = new int[n];
         Stack < Integer > stack = new Stack < > ();
-         
-        // Start from right end, kuki answer bnate waqt easy hoga 
-        for (int i = arr.length - 1; i >= 0; i--) {
+          
+        for (int i = arr.length - 1; i >= 0; i--) {                     // Start from right end, kuki answer bnate waqt easy hoga
             if (stack.isEmpty()) {
                 ans[i] = -1;
             } 
@@ -100,61 +102,54 @@ public class Solution {
     
 }
 
-//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
-// https://pepcoding.com/resources/online-java-foundation/stacks-and-queues/next-greater-element-official/ojquestion
-// Same code at pepcoding without comments
+// Using Stack 
+// Iterating from left
+
+// Less intuitive
+// TC : O(2N) : At max every element will be visited twice once while pushing in the stack, and again while poping from the stack
 
 import java.io.*;
 import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
 
-public class Main {
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc =  new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for(int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        
+        int[] ans = nextGreaterElement(arr);
+        for(int i = 0; i < arr.length; i++) {
+            System.out.println(arr[i] + " " + ans[i]);
+        }
+    }
     
-    public static void display(int[] a) {
-        StringBuilder sb = new StringBuilder();
-
-        for (int val: a) {
-            sb.append(val + "\n");
-        }
-        System.out.println(sb);
-    }
-
-    public static void main(String[] args) throws Exception {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-        int n = Integer.parseInt(br.readLine());
-        int[] a = new int[n];
-        for (int i = 0; i < n; i++) {
-            a[i] = Integer.parseInt(br.readLine());
-        }
-
-        int[] nge = nextGreaterElement(a);
-        display(nge);
-    }
-
-
+    
     //================================================================
     public static int[] nextGreaterElement(int[] arr) {
         int n = arr.length;
         int[] ans = new int[n];
+        Arrays.fill(ans, -1);
         Stack < Integer > stack = new Stack < > ();
-        for (int i = arr.length - 1; i >= 0; i--) {
-            if (stack.isEmpty()) {
-                ans[i] = -1;
-                stack.push(arr[i]);
-            } else {
-                while (!stack.isEmpty() && stack.peek() < arr[i]) {
-                    stack.pop();
-                }
-                if (stack.isEmpty()) ans[i] = -1;
-                else ans[i] = stack.peek();
-                stack.push(arr[i]);
+        
+        
+        for (int i = 0; i < n; i++) {                                   // If we iterate from left
+            while (!stack.isEmpty() && arr[stack.peek()] < arr[i]) {    // Jo v mere se chote elements hai stack me, mai uska answer bn sakti hu
+                ans[stack.pop()] = arr[i];                              // So answer bn jaao and us idx ko pop kar do, kuki ab us idx ka answer bn chuka hai
             }
+            stack.push(i);                                              // Push the elements idx kuki uska answer bn na baaki hai avi 
         }
         return ans;
     }
     //=================================================================
-
 }
 
-//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
