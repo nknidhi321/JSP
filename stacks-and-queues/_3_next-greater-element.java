@@ -48,6 +48,8 @@ public class Solution {
 
 // Using Stack
 
+// TC : O(2N) : At max every element will be visited twice once while pushing in the stack, and again while poping from the stack
+
 import java.io.*;
 import java.util.*;
 import java.text.*;
