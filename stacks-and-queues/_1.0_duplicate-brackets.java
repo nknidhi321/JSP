@@ -13,21 +13,21 @@ public class Main {
         String str = sc.nextLine();
         System.out.println(haveDuplicateBrackets(str));
     }
-    
+   
     public static boolean haveDuplicateBrackets(String str) {
         Stack<Character> stack = new Stack<>();
         
         for(int i = 0; i < str.length(); i++) {
             char ch = str.charAt(i);
             if(ch == ')') {
-                if(stack.peek() == '(') return true;
+                if(stack.peek() == '(') return true;      // Opening and closing bracket k bich count zero that mtlb ek v element nahi tha => Duplicate bracket exists
                 else {
-                    while(!stack.isEmpty() && stack.peek() != '(') stack.pop();
-                    if(!stack.isEmpty()) stack.pop();
+                    while(!stack.isEmpty() && stack.peek() != '(') stack.pop();       // pop until you get an opening bracket
+                    if(!stack.isEmpty()) stack.pop();    // pop that opening bracket also
                 }
             }
             else {
-                stack.push(ch);
+                stack.push(ch);     // Baaki jo v elements aaye push kar do
             }
         }
         return false;
