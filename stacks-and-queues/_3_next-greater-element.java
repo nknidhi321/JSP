@@ -76,18 +76,20 @@ public class Solution {
         int n = arr.length;
         int[] ans = new int[n];
         Stack < Integer > stack = new Stack < > ();
+         
+        // Start from right end, kuki answer bnate waqt easy hoga 
         for (int i = arr.length - 1; i >= 0; i--) {
             if (stack.isEmpty()) {
                 ans[i] = -1;
-                stack.push(arr[i]);
-            } else {
-                while (!stack.isEmpty() && stack.peek() < arr[i]) {
-                    stack.pop();
+            } 
+            else {
+                while (!stack.isEmpty() && stack.peek() < arr[i]) {     // Agar stack k top pe koi element humse chota exist krta hai toh wo hamara answer kvi nai bn sakta
+                    stack.pop();                                        // Kuki next greater element find karna tha so pop()
                 }
-                if (stack.isEmpty()) ans[i] = -1;
-                else ans[i] = stack.peek();
-                stack.push(arr[i]);
+                if (stack.isEmpty()) ans[i] = -1;       // Agar pop krte krte stack empty ho gaya mtlb mera next greater -1 hoga   
+                else ans[i] = stack.peek();             // Else agar ab v stack k top pe elements bacha hai then stack ka top mera next greater bnega
             }
+            stack.push(arr[i]);                         // Push yourself because tum apne se piche walo ka answer bn saktey ho   
         }
         return ans;
     }
@@ -95,10 +97,10 @@ public class Solution {
     
 }
 
-//-----------------------------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 // https://pepcoding.com/resources/online-java-foundation/stacks-and-queues/next-greater-element-official/ojquestion
-// Same code at pepcoding
+// Same code at pepcoding without comments
 
 import java.io.*;
 import java.util.*;
