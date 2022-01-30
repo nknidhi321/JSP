@@ -1,6 +1,7 @@
 // https://www.hackerrank.com/contests/second/challenges/next-greater-element/problem
 
 // Brute force
+// TC : O(N^2)
 
 import java.io.*;
 import java.util.*;
