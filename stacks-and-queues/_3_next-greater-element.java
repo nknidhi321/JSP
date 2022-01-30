@@ -52,6 +52,7 @@ public class Solution {
 // Iterating from right
 
 // More intuitive
+// Note : Yaha elements push karenge stack me
 // TC : O(2N) : At max every element will be visited twice once while pushing in the stack, and again while poping from the stack
 
 import java.io.*;
@@ -94,7 +95,7 @@ public class Solution {
                 if (stack.isEmpty()) ans[i] = -1;       // Agar pop krte krte stack empty ho gaya mtlb mera next greater -1 hoga   
                 else ans[i] = stack.peek();             // Else agar ab v stack k top pe elements bacha hai then stack ka top mera next greater bnega
             }
-            stack.push(arr[i]);                         // Push yourself because tum apne se piche walo ka answer bn saktey ho   
+            stack.push(arr[i]);                         // Push yourself(element) because tum apne se piche walo ka answer bn saktey ho   
         }
         return ans;
     }
@@ -108,6 +109,7 @@ public class Solution {
 // Iterating from left
 
 // Less intuitive
+// Note : Yaha idx push hoga stack me
 // TC : O(2N) : At max every element will be visited twice once while pushing in the stack, and again while poping from the stack
 
 import java.io.*;
@@ -145,7 +147,7 @@ public class Solution {
             while (!stack.isEmpty() && arr[stack.peek()] < arr[i]) {    // Jo v mere se chote elements hai stack me, mai uska answer bn sakti hu
                 ans[stack.pop()] = arr[i];                              // So answer bn jaao and us idx ko pop kar do, kuki ab us idx ka answer bn chuka hai
             }
-            stack.push(i);                                              // Push the elements idx kuki uska answer bn na baaki hai avi 
+            stack.push(i);                                              // Push yousrself(idx) kuki uska answer bn na baaki hai avi 
         }
         return ans;
     }
