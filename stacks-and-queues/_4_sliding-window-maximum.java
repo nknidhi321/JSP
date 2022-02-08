@@ -26,22 +26,22 @@ class Solution {
 
 class Solution {
 
-    static ArrayList < Integer > max_of_subarrays(int arr[], int n, int win) {
-        ArrayList < Integer > list = new ArrayList < > ();
-        int[] nge = nextGreaterElement(n, arr);
-        for (int sp = 0; sp <= n - win; sp++) {
+    static ArrayList <Integer> max_of_subarrays(int arr[], int n, int win) {
+        ArrayList <Integer> list = new ArrayList<>();
+        int[] ngeIdx = nextGreaterElement(n, arr);
+        for(int sp = 0; sp <= n - win; sp++) {
             int ep = sp;
-            while (ep < sp + win) { // Isme ep ek ek kar k nahi, directly apne next greater wale idx pe chala jaaega agar within win hai toh
-                int ngeIdx = nge[ep];
-                if (ngeIdx < sp + win) ep = ngeIdx; // Agar mera next greater within win hai toh uspe chale jaao
-                else break; // Agar mera next greater mere win se bhr lie krta hai toh hum he max honge apne win k
+            while(ngeIdx[ep] < sp + win) {
+                // Isme ep ek ek kar k nahi, directly apne next greater wale idx pe chala jaaega agar within win hai toh
+                // Agar mera next greater mere win se bhr lie krta hai toh hum he max honge apne win k
                 // Kuki mere se lekar mere next greater k bich me, saare elements for sure mere se chote he honge, islye mai he max houngi
+                ep = ngeIdx[ep]; 
             }
             list.add(arr[ep]);
         }
         return list;
     }
-
+    
     // In terms of idx
     public static int[] nextGreaterElement(int n, int[] arr) {
         int[] ans = new int[n];
