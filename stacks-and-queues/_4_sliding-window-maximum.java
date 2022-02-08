@@ -53,7 +53,7 @@ class Solution {
             while (!stack.isEmpty() && arr[stack.peek()] < arr[i]) stack.pop();
             if (stack.isEmpty()) ans[i] = n; // Agar pop krte krte stack empty ho gaya mtlb mera next greater n hoga   
             else ans[i] = stack.peek(); // Else agar ab v stack k top pe elements bacha hai then stack ka top mera next greater bnega
-            stack.push(i); // Push yourself(element) because tum apne se piche walo ka answer bn saktey ho 
+            stack.push(i); // Push yourself(idx) because tum apne se piche walo ka answer bn saktey ho 
         }
         return ans;
     }
