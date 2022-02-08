@@ -21,7 +21,7 @@ class Solution {
 //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 // Using stack // Efficient
-// Worst case : O(N^2) jab sbka next greater uske next wala idx ho jaaye
+// Worst case : O(k * N) jab sbka next greater uske next wala idx ho jaaye
 // but somewhat better than brute force.
 
 class Solution {
