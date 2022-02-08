@@ -2,14 +2,15 @@
 // https://nados.io/question/sliding-window-maximum?zen=true
 
 // Brute Force  // TLE
+// Worst case : O(N^2)
 
 class Solution {
-    static ArrayList < Integer > max_of_subarrays(int arr[], int n, int k) {
+    static ArrayList < Integer > max_of_subarrays(int arr[], int n, int win) {
         ArrayList < Integer > list = new ArrayList < > ();
-        for (int sp = 0; sp <= n - k; sp++) { // sp => startingPoint
+        for (int sp = 0; sp <= n - win; sp++) { // sp => startingPoint
             int max = Integer.MIN_VALUE;
-            for (int win = sp; win < sp + k; win++) { // Har k size k window me check karo
-                max = Math.max(max, arr[win]);
+            for (int ep = sp; ep < sp + win; ep++) { // ep => endingPoint
+                max = Math.max(max, arr[ep]); // Har k size k window me check karo
             }
             list.add(max);
         }
@@ -19,6 +20,43 @@ class Solution {
 
 //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
-// Using stack
+// Using stack // Efficient
+// Worst case : O(N^2) jab sbka next greater uske next wala idx ho jaaye
+// but somewhat better than brute force.
 
+class Solution {
 
+    static ArrayList < Integer > max_of_subarrays(int arr[], int n, int win) {
+        ArrayList < Integer > list = new ArrayList < > ();
+        int[] nge = nextGreaterElement(n, arr);
+        for (int sp = 0; sp <= n - win; sp++) {
+            int ep = sp;
+            while (ep < sp + win) { // Isme ep ek ek kar k nahi, directly apne next greater wale idx pe chala jaaega agar within win hai toh
+                int ngeIdx = nge[ep];
+                if (ngeIdx < sp + win) ep = ngeIdx; // Agar mera next greater within win hai toh uspe chale jaao
+                else break; // Agar mera next greater mere win se bhr lie krta hai toh hum he max honge apne win k
+                // Kuki mere se lekar mere next greater k bich me, saare elements for sure mere se chote he honge, islye mai he max houngi
+            }
+            list.add(arr[ep]);
+        }
+        return list;
+    }
+
+    // In terms of idx
+    public static int[] nextGreaterElement(int n, int[] arr) {
+        int[] ans = new int[n];
+        Stack < Integer > stack = new Stack < > ();
+
+        for (int i = arr.length - 1; i >= 0; i--) { // Start from right end, kuki answer bnate waqt easy hoga
+            // Agar stack k top pe koi element humse chota exist krta hai toh wo hamara answer kvi nai bn sakta, 
+            // Kuki next greater element find karna tha so pop()    
+            while (!stack.isEmpty() && arr[stack.peek()] < arr[i]) stack.pop();
+            if (stack.isEmpty()) ans[i] = n; // Agar pop krte krte stack empty ho gaya mtlb mera next greater n hoga   
+            else ans[i] = stack.peek(); // Else agar ab v stack k top pe elements bacha hai then stack ka top mera next greater bnega
+            stack.push(i); // Push yourself(element) because tum apne se piche walo ka answer bn saktey ho 
+        }
+        return ans;
+    }
+}
+
+//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
