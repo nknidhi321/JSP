@@ -18,12 +18,12 @@ class Solution {
     
     public static int[] nextSmallerToLeft(int n, int[] heights) {
         int[] ans = new int[n];
-        Arrays.fill(ans, -1); // Agar kisi ka nextSmallerToLeft nahi mil raha toh wo -1 hoga
         Stack<Integer> stack = new Stack<>();
         
         for(int i = 0; i < n; i++) { // Left calculate karna hai toh left se iterate karo
             while(!stack.isEmpty() && heights[stack.peek()] >= heights[i]) stack.pop();  //Khudse bade ya equal ko pop karwao
             if(!stack.isEmpty()) ans[i] = stack.peek(); // Ab jo v hai wo, val se chota hoga
+            else ans[i] = -1; // Agar kisi ka nextSmallerToLeft nahi mil raha toh wo -1 hoga
             stack.push(i); // Tum v kisi ka answer bn saktey ho
         }
         return ans;
@@ -31,12 +31,12 @@ class Solution {
     
     public static int[] nextSmallerToRight(int n, int[] heights) {
         int[] ans = new int[n];
-        Arrays.fill(ans, n); // Agar kisi ka nextSmallerToRight nahi mil raha toh wo n hoga
         Stack<Integer> stack = new Stack<>();
         
         for(int i = n - 1; i >= 0; i--) { // Right calculate karna hai toh right se iterate karo
             while(!stack.isEmpty() && heights[stack.peek()] >= heights[i]) stack.pop(); //Khudse bade ya equal ko pop karwao
             if(!stack.isEmpty()) ans[i] = stack.peek();  // Ab jo v hai wo, val se chota hoga
+            else ans[i] = n; // Agar kisi ka nextSmallerToRight nahi mil raha toh wo n hoga
             stack.push(i); // Tum v kisi ka answer bn saktey ho
         }
         return ans;
