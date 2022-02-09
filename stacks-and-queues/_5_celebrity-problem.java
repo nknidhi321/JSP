@@ -56,13 +56,13 @@ class Solution {
         int pC = stack.pop(); // pC => potentialCelebrity
         
         /* 
-           Conditions for potentialCelebrity to be actual celebrity :-
-             1) Check columns, saara 0 hona chahiye 
-             2) Check rows, saare 1 hone chahiye except diagonal crossing cell
+           Conditions for potentialCelebrity to be actual celebrity except diagonal crossing cell :-
+             1) Check columns, saara 0 hona chahiye
+             2) Check rows, saare 1 hone chahiye
         */
         for(int idx = 0; idx < n; idx++) {
-            if((M[pC][idx] != 0) || (idx != pC && M[idx][pC] != 1)) {
-                return -1; // potentialCelebrity actual celebrity nahi tha
+            if((idx != pC) && (M[pC][idx] != 0 || M[idx][pC] != 1)) {
+                return -1;
             }
         }
         
