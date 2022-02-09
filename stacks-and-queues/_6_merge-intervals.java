@@ -1,13 +1,49 @@
 // https://leetcode.com/problems/merge-intervals/ 
 
 /*
-  Intuition :
-  ---------
-  Starting pt. k against sort karo.
-  Ek Stack bnao
-  Now, one by one find overlapping interval against stack's top, if overlapping then merge and push onto the stack else push as it is.
-  Last me jo v stack me hoga wo ans hai.
+    Intuition :
+    ---------
+    Starting pt. k against sort karo.
+    Ek Stack bnao
+    Now, one by one find overlapping interval against stack's top, if overlapping then merge and push onto the stack else push as it is.
+    Last me jo v stack me hoga wo ans hai.
 */
+
+
+// Using int[] to store in Stack
+
+class Solution {
+    
+    public int[][] merge(int[][] intervals) {
+        int n = intervals.length;
+        int m = intervals[0].length;
+        Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
+        
+        Stack<int[]> stack = new Stack<>();
+        for(int i = 0; i < n; i++) {
+            int[] interval = intervals[i];
+            if(!stack.isEmpty() && stack.peek()[1] >= interval[0]) {  // Agar pichla end Pt. bada ya equal hai curr start pt. se toh overlap ho raha hai
+                int[] top = stack.pop();
+                top[1] = Math.max(top[1], interval[1]);  // Pichla and curr end pt. me se jo v bada hoga wo new end pt. bnega 
+                stack.push(top);
+            }
+            else {  // No overlapping
+                stack.push(interval);
+            }
+        }
+        
+        int i = 0;
+        int[][] ans = new int[stack.size()][m];
+        for(int[] pair: stack) {
+            ans[i++] = pair;
+        }
+        return ans;
+    }
+}
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+// Same code as above but Using Pair class to store in Stack
 
 class Solution {
     
