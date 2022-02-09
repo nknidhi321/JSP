@@ -2,8 +2,8 @@
 
     Definition :-
     ----------
-    Celebrity kisi ko nahi janta
-    Celebrity ko sab jaante hai
+    Celebrity kisi ko nahi janta (0)
+    Celebrity ko sab jaante hai (1)
     
     
     Observation :-
@@ -46,8 +46,8 @@ class Solution {
             int a = stack.pop();
             int b = stack.pop();
             
-            if(M[a][b] == 1) stack.push(b); // a knows b, b can be potential celebrity
-            if(M[a][b] != 1) stack.push(a); // a do not know b, a can be potential celebrity
+            if(M[a][b] == 1) stack.push(b); // a knows b => a cannot be potentialCelebrity where b is still potential celebrity
+            if(M[a][b] == 0) stack.push(a); // a do not know b => b cannot be potentialCelebrity where a is still potential celebrity
         }
         
         // Ab sirf 1 potentialCelebrity bacha hai, uske row and column pe jaake check kar lo
@@ -55,21 +55,18 @@ class Solution {
  
         int pC = stack.pop(); // pC => potentialCelebrity
         
-        // Check columns, saara 0 hona chahiye
-        for(int j = 0; j < n; j++) {
-            if(M[pC][j] == 1) {
-                return -1;
+        /* 
+           Conditions for potentialCelebrity to be actual celebrity :-
+             1) Check columns, saara 0 hona chahiye 
+             2) Check rows, saare 1 hone chahiye except diagonal crossing cell
+        */
+        for(int idx = 0; idx < n; idx++) {
+            if((M[pC][idx] != 0) || (idx != pC && M[idx][pC] != 1)) {
+                return -1; // potentialCelebrity actual celebrity nahi tha
             }
         }
         
-        // Check rows, saare 1 hone chahiye except diagonal crossing cell
-        for(int i = 0; i < n; i++) {
-            if(i != pC && M[i][pC] == 0) {
-                return -1;
-            }
-        }
-        
-        return pC;
+        return pC; // potentialCelebrity he actual celebrity tha
     }
 }
 
