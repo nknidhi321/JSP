@@ -1,5 +1,15 @@
 10^9 operations -> 1 sec
+Array size at max can be 10^7
 
+//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+ArrayDeque && LinkedList :-
+------------------------
+
+ArrayDeque and LinkedList both are exactly same its just that ArrayDeque is based on array and LinkedList is based on LinkedList
+ArrayDeque has certain limits only upto 10^7 size, but LinkedList can grow until there is enough space to make a node.
+but ArrayDeque needs contiguous memory. So, ArrayDeque has some space constrains, but it is faster than LL
+Apart from space whereEver necessary use ArrayDeque instead of LinkedList, since ArrayDequeu is fatser than LL
 
 //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
@@ -122,4 +132,14 @@ now how will you move to the previous element, to maintain your tail, if it woul
 Since there's no prev ptr which points to the prev node in singly LL, 
 Hence, you will again have to travel from head till the last node just to maintain your tail. So, O(N)
 
+  
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+  
+  
+Queue adapter using SinglyLL :-
+----------------------------  
+
+Add nodes to the right hand side of the chain, tail pe offer karo, head se poll karo
+Reason khud smjh jaao like above.
+  
 //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
