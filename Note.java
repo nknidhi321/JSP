@@ -1,6 +1,9 @@
 10^9 operations -> 1 sec
 Array size at max can be 10^7
 
+String is made as final thats why it is immutable [Can be initialized only once in its life cycle]
+StringBuilder is internally built on ArrayList
+
 //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 ArrayDeque && LinkedList :-
