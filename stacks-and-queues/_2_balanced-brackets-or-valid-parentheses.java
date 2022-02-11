@@ -24,7 +24,7 @@ class Solution {
             else if((ch == ')' && stack.peek() == '(' ) || (ch == '}' && stack.peek() == '{' ) || (ch == ']' && stack.peek() == '[' )) stack.pop();
         }
         
-        // Kuki saare sahi pairs ko humne stack se pop karwa diya tha => Ab jo stack me bache hai wo galat log hai 
+        // Kuki saare sahi pairs ko humne stack se pop karwa diya tha => Ab jo stack me bache hai wo sirf '(' || '{' || '[' opening brackets honge 
         // jinke pairs nahi mile 
         // So check karo agar stack khali hai mtlb sbke pairs mil gaye honge 
         // Agar khali nahi hai then sbke pairs nahi mile
