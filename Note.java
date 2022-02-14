@@ -118,7 +118,9 @@ Give one extra nextLine() in your code for that enter which you hit after 10
   
   
 //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
- 
+
+NOTE : While solving stack questions, add -1 in stack and instead of !isEmpty() check, just make != -1 check, works in most of the problem, use accordingly.
+  
   
 Stack adapter using SinglyLL :-
 ----------------------------
@@ -136,7 +138,7 @@ Since there's no prev ptr which points to the prev node in singly LL,
 Hence, you will again have to travel from head till the last node just to maintain your tail. So, O(N)
 
   
------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
   
   
 Queue adapter using SinglyLL :-
