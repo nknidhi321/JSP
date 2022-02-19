@@ -2,6 +2,7 @@
 Array size at max can be 10^7
 Never convert LL question in array and try to solve because LL constraint can be greater that 10^7, mostly constraint will be 10^9
 Never solve LL question using recursion unless asked, because recursion stacks size is 10^4, and LL constraint is 10^9, always try solving iteratively 
+LL k question ko hamesha pehle bich k situation ko socho, itna kaam ho gaya hai ab kaise move karna hai, it will create your insight
 
 String is made as final thats why it is immutable [Can be initialized only once in its life cycle]
 StringBuilder is internally built on ArrayList
