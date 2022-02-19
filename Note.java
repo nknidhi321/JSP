@@ -1,5 +1,6 @@
 10^9 operations -> 1 sec
 Array size at max can be 10^7
+Never convert LL question in array and try to solve because LL constraint can be greater that 10^7, mostly constraint will be 10^9
 
 String is made as final thats why it is immutable [Can be initialized only once in its life cycle]
 StringBuilder is internally built on ArrayList
