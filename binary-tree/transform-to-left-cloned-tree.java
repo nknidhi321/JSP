@@ -82,15 +82,13 @@ public class Main {
   }
 
 //==================================================================================================================
-
+  // Left right subtree apna kaam kr k le aaega, aap apna kaam kar lo
   public static Node createLeftCloneTree(Node root){
-    // write your code here
     if(root == null) return root;
-    
-    Node cloneNodeLeft = createLeftCloneTree(root.left);
-    
-    Node cloneNode = new Node(root.data, cloneNodeLeft, null);
-    root.left = cloneNode;
+
+    Node clonedNode = new Node(root.data, null, null);
+    clonedNode.left = createLeftCloneTree(root.left);
+    root.left = clonedNode;
     root.right = createLeftCloneTree(root.right);
     return root;
   }
