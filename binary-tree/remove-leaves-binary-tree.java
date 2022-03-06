@@ -83,19 +83,18 @@ public class Main {
     display(node.right);
   }
 
+  
 //=============================================================================================================
-
   public static Node removeLeaves_01(Node root){
-    // write your code here
     if(root == null) return null;
-    if(root.left == null && root.right == null) return null;
+    if(root.left == null && root.right == null) return null;   //Remove leafs -> Solve in PREORDER
+    
     root.left = removeLeaves_01(root.left);
     root.right = removeLeaves_01(root.right);
     return root;
   }
   
   public static void removeLeaves_02(Node root){
-    // write your code here
     if(root == null) return;
     
     if(root.left != null){
@@ -117,9 +116,9 @@ public class Main {
     }
     
   }
-
 //========================================================================================================
 
+  
   public static void main(String[] args) throws Exception {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     int n = Integer.parseInt(br.readLine());
