@@ -1,3 +1,8 @@
+Since answer can be very large, return your answer mod 10^9+7
+public static int mod = (int)(1e9 + 7);
+  
+//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  
 10^9 operations -> 1 sec
 Array size at max can be 10^7
 Never convert LL question in array and try to solve because LL constraint can be greater that 10^7, mostly constraint will be 10^9
@@ -138,7 +143,7 @@ Suppose if you do push pop from tail then,
 When you add the new node to the last(tail) then push is O(1) && pop is O(N). Why ?
 Because, if you delete the tail your element will be popped for sure O(1) but
 now how will you move to the previous element, to maintain your tail, if it would be a singly LL ?
-Since there's no prev ptr which points to the prev node in singly LL, 
+Since theres no prev ptr which points to the prev node in singly LL, 
 Hence, you will again have to travel from head till the last node just to maintain your tail. So, O(N)
 
   
