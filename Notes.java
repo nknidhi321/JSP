@@ -1,3 +1,8 @@
+floor     <=        data      <       ceil
+     Lower bound           upperbound
+
+//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
 Since answer can be very large, return your answer mod 10^9+7
 public static int mod = (int)(1e9 + 7);
   
