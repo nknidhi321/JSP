@@ -1,6 +1,9 @@
 floor     <=        data      <       ceil
      Lower bound           upperbound
 
+
+
+NOTE : In BS always think for of target && and not for arr[mid]
 //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 Since answer can be very large, return your answer mod 10^9+7
