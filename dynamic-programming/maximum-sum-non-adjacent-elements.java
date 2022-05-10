@@ -1,5 +1,30 @@
+// https://practice.geeksforgeeks.org/problems/max-sum-without-adjacents2430/1/#
+// Using inc, exc => Just optimizaion of the bottom most Sol.
+// Excluding/ Pruning states which can never be your ans 
+
+class Solution {
+
+    public int findMaxSum(int arr[], int n) {
+
+        int incSum = arr[0];
+        int excSum = 0;
+        
+        for(int i = 1; i < n; i++) {
+            int newincSum = excSum + arr[i];
+            int newexcSum = Math.max(incSum, excSum);
+           
+            incSum = newincSum;
+            excSum = newexcSum;
+        }
+        return Math.max(incSum, excSum);
+    }
+    
+}
+
+//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 // https://www.pepcoding.com/resources/online-java-foundation/dynamic-programming-and-greedy/maximum-sum-non-adjacent-elements-official/ojquestion
 
+// At pep
 // Similar to house robber, but here elements can be negative too
 // So, If there are negative values we will not loot that house
 
@@ -41,4 +66,40 @@ public class Main {
         return dp[n] = Math.max(adjacentMax, currMax);
     }
 }
+
+//------------------------------------------------------------------------------
+// https://practice.geeksforgeeks.org/problems/max-sum-without-adjacents2430/1/#
+// Same sol. at GFG
+// But no -ve inputs
+
+class Solution {
+    
+    public int findMaxSum(int nums[], int n) {
+        // for(int i = 0; i < n; i++) {
+        //     if(nums[i] < 0) nums[i] = 0; // If elements is less than 0, make it as 0
+        //     // NOTE : If all elements are 0, you won't loot any house, So answer is 0
+        // }
+        Integer[] dp = new Integer[n + 1];
+        return rob_Memo(n, nums, dp);
+    }
+    
+    public static int rob_Memo(int n, int[] nums, Integer[] dp) {
+      
+        // Jab house = 0 hai toh max 0 steal kar saktey ho
+        // Jab house = 1 hai toh max usi ek house ko steal kar sakey ho
+        if(n == 0 || n == 1) return dp[n] = (n == 0 ? 0 : nums[n - 1]);  
+        
+        if(dp[n] != null) return dp[n];
+        
+        // Max of adjacent and currHouse se steal karne ka chance tvi milega jab house >= 2 honge
+        int adjacentMax = 0, currMax = 0;
+        adjacentMax = rob_Memo(n - 1, nums, dp);  // Not taking curr element
+        currMax = rob_Memo(n - 2, nums, dp) + nums[n - 1];  // Taking curr element
+        
+        // Now, take the max of the above two choices
+        return dp[n] = Math.max(adjacentMax, currMax);
+    }
+    
+}
+
 //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
