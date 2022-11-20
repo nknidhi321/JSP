@@ -1,3 +1,18 @@
+Asc. Order :-
+     Pass (a,b) {
+          if(a - b > 0) return 1 => a > b
+     }
+
+------------------------------------------
+
+Dsc. Order :-
+     Pass (a,b) {
+          if(b - a > 0) return 1 => b > a
+     }
+
+//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+
 floor     <=        data      <       ceil
      Lower bound           upperbound
 
